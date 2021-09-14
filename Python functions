@@ -1,0 +1,27 @@
+# function = a block of code which is executed only when it is called
+
+def hello():
+    print("hello!")
+    print("Have a nice day!")
+
+def hello2(name):
+    print("hello! " + name)
+    print("Have a nice day!")
+
+def hello3(first_name, last_name, age):
+    print("hello! " + first_name + " " + last_name)
+    print("You are " + str(age) + " years old")
+    print("Have a nice day!")
+
+hello()
+hello()
+hello()
+
+my_name = "Bro"
+
+hello2(my_name)
+
+#hello2("Bro")
+#hello2("Dude")
+
+hello3("Bro","Cold",21)
