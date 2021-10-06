@@ -1,0 +1,16 @@
+import os
+
+source = "test.txt"
+destination = "C:\\Users\\Jw\\Desktop\\test.txt"
+# need to change these to double backslashes
+# because that is the escape sequence to print
+# a backslash within a string
+
+try:
+    if os.path.exists(destination):
+        print("There is already a file there")
+    else :
+        os.replace(source, destination)
+        print(source + " was moved")
+except FileNotFoundError:
+    print(source + " was not found")
