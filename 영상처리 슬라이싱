@@ -1,0 +1,33 @@
+import cv2
+
+img = cv2.imread("images/bufs.jpg")
+cv2.imshow("BUFS",img)
+start = end = (0,0)
+isDone = False
+
+def onMouse(event, x, y, flags, param):
+    global start, end, isDone
+    if not isDone and event == cv2.EVENT_LBUTTONDOWN:
+        start = (x, y)
+
+        elif not isDone and event == cv2.EVENT_MOUSEMOVE:
+            if flags & cv2.EVENT_FLAG_LBUTTON:
+                end = (x, y)
+                img2 = img.copy()
+                cv2.rectangle(img2, start, end, (0,0,255), 5)
+                cv2.imshow("BUFS", img2)
+        elif not isDone and event == cv2.EVENT_LBUTTONUP:
+            print(start, end)
+            isDone = True
+            dst = image[ y:end, x:start ]  #이미지 자르기 슬라이싱
+
+            cv2.imshow("BUFS", dst)
+            cv2.imwrite("cutimage.jpg", dst)
+        elif isDone and event == cv2.EVENT_RBUTTONDOWN:
+            isDone = False
+            cv2.imshow("BUFS", img)
+
+cv2.setMouseCallback("BUFS", onMouse)
+
+cv2.waitKey()
+cv2.destroyAllWindows()
